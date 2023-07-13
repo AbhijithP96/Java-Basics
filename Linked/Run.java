@@ -13,7 +13,7 @@ public class Run {
         do{
            
             System.out.println("Linked List \n Select an Operation to continue");
-            System.out.println(" 1.Create a List \n 2.Size of the List \n 3.Insert At Given Index \n 4.Append \n 5.Prepend \n 6.Search \n 7.Delete \n 8.Print");
+            System.out.println(" 1.Create a List \n 2.Size of the List \n 3.Insert At Given Index \n 4.Append \n 5.Prepend \n 6.Search \n 7.Delete \n 8.Get Node At index \n 9.Sort \n 10.Print");
             int option = sc.nextInt();
 
             switch (option) {
@@ -57,8 +57,21 @@ public class Run {
                         ob.delete(new Node(del));
                     
                     break;
+
+                case 8:System.out.println("Enter Index");
+                        int index = sc.nextInt();
+                        Node p = ob.getNode(index);
+                        System.out.println("Value at given Index: " + p.getData());
+
+                    break;
                 
-                case 8: ob.print();
+
+                case 9:QuickSort qk = new QuickSort(ob);
+                        qk.sort(ob, 0, ob.size()-1);
+                        System.out.println("List Sorted");
+
+                    break;
+                case 10: ob.print();
 
                     break;
 

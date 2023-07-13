@@ -178,6 +178,27 @@ public class Linked {
         }
     }
 
+    Node getNode(int index){
+        if(head == null){
+            System.out.println("No List Found");
+        }
+        else{
+            int pos = 0;
+            Node current = head;
+            while(pos != index){
+                current = current.getNext();
+                pos++;
+            }
+
+            return current;
+
+        }
+
+        return null;
+
+    }
+
+
     void print(){
 
         if(head == null){
