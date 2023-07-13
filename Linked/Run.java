@@ -3,10 +3,81 @@ import java.util.Scanner;
 
 public class Run {
 
+    static Linked ob = new Linked();
+    static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
+
+        int rc=0;
+
+        do{
+           
+            System.out.println("Linked List \n Select an Operation to continue");
+            System.out.println(" 1.Create a List \n 2.Size of the List \n 3.Insert At Given Index \n 4.Append \n 5.Prepend \n 6.Search \n 7.Delete \n 8.Print");
+            int option = sc.nextInt();
+
+            switch (option) {
+                case 1:create();
+                    
+                    break;
+                
+                case 2:System.out.println("The Size of the List is : " + ob.size()); 
+
+                    break;
+
+                case 3: insert();
+
+                    break;
+
+                case 4:System.out.println("Enter Value");
+                        int val = sc.nextInt();
+                        ob.append(new Node(val));
+                
+                    break;
+                
+                case 5:System.out.println("Enter Value");
+                        int value = sc.nextInt();
+                        ob.prepend(new Node(value));
+                    
+                    break;
+                
+                case 6:System.out.println("Enter value to Search");
+                        int search = sc.nextInt();
         
-        Linked ob = new Linked();
-        Scanner sc = new Scanner(System.in);
+                        if(ob.search(new Node(search)) == -1)
+                            System.out.println("No element found");
+                        else
+                            System.out.println("Element found at Index :" + ob.search(new Node(search)));
+
+                    break;
+
+                case 7:System.out.println("Enter Value to delete");
+                        int del = sc.nextInt();
+        
+                        ob.delete(new Node(del));
+                    
+                    break;
+                
+                case 8: ob.print();
+
+                    break;
+
+                default:System.out.println("Wrong Input");
+                
+            
+                
+            }
+
+            System.out.println(" Do you want to continue \n 1.Yes \n 2.No");
+            rc=sc.nextInt();
+
+        }while(rc==1);
+        
+        
+        
+    }
+
+    static void create(){
 
         System.out.println("Enter Size");
         int size = sc.nextInt();
@@ -23,37 +94,29 @@ public class Run {
             System.out.println("Enter upper bound");
             int ub = sc.nextInt();
 
-            Random r = new Random();
+            if(lb>=ub)
+                System.out.println("Lower bound is larger than upper bound");
+            else{
 
-            for(int i =0; i<size; i++){
+                Random r = new Random();
 
-                ob.append(new Node(r.nextInt((ub-lb)+1)+lb));
+                for(int i =0; i<size; i++){
+
+                    ob.append(new Node(r.nextInt((ub-lb)+1)+lb));
+                }
             }
         }
+    }
 
-        System.out.println(ob.size());
-        
-        ob.print();
+    static void insert(){
 
         System.out.println("Enter Index");
         int index = sc.nextInt();
         System.out.println("Enter Value");
         int val = sc.nextInt();
 
-        ob.addAtIndex(new Node(val), index);
+        ob.insert(new Node(val), index);
 
-        System.out.println(ob.size());
-        
-        ob.print();
-
-        System.out.println("Enter value to Search");
-        int search = sc.nextInt();
-
-        if(ob.search(new Node(search)) == -1)
-            System.out.println("No element found");
-        else
-            System.out.println("Element found at Index :" + ob.search(new Node(search)));
-        
     }
     
 }

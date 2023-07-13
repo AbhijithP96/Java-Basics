@@ -65,9 +65,16 @@ public class Linked {
         }
     }
 
-    void addAtIndex(Node p, int index){
+    void insert(Node p, int index){
 
-        if(index > size()){
+        if(head == null){
+
+            System.out.println("No list Found \n new List created instead with the given value");
+            head = p;
+        }
+
+
+        else if(index > size()){
 
             System.out.println("Index is larger than size!!");
         }
@@ -76,12 +83,6 @@ public class Linked {
 
             append(p);
         }
-
-        else if(head == null){
-
-            head = p;
-        }
-
         else if(index == 0){
 
             prepend(p);
@@ -137,6 +138,44 @@ public class Linked {
             return pos;
         
         return -1;
+    }
+
+    void delete(Node p){
+
+        if(head == null){
+
+            System.out.println("No List Found");
+        }
+
+        else{
+
+            int pos = search(p);
+
+            if(pos == -1){
+
+                System.out.println("No such element found");
+            }
+
+            else{
+
+                if(pos == 0){
+                    head = head.getNext();
+                }
+                else{
+
+                    Node current = head.getNext();
+                    Node previous = head;
+
+                    for(int i=1;i<pos;i++){
+
+                        previous = current;
+                        current =current.getNext();
+                    }
+
+                    previous.setNext(current.getNext());
+                }
+            }
+        }
     }
 
     void print(){
