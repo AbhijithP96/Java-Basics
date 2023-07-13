@@ -30,7 +30,7 @@ public class Linked {
 
     }
 
-    void add(Node p){
+    void append(Node p){
 
         if(head == null){
 
@@ -50,21 +50,41 @@ public class Linked {
         }
     }
 
+    void prepend(Node p){
+
+        if(head == null){
+
+            head = p;
+        }
+
+        else{
+
+            Node new_node = head;
+            head = p;
+            head.setNext(new_node);
+        }
+    }
+
     void addAtIndex(Node p, int index){
 
-        if(index >= size()){
+        if(index > size()){
 
             System.out.println("Index is larger than size!!");
         }
         
-        else if(index == size()-1){
+        else if(index == size()){
 
-            add(p);
+            append(p);
         }
 
         else if(head == null){
 
             head = p;
+        }
+
+        else if(index == 0){
+
+            prepend(p);
         }
 
         else{
@@ -84,6 +104,39 @@ public class Linked {
 
         }
         
+    }
+
+    int search(Node p){
+
+        boolean flag = false;
+        int pos = 0;
+        if(head == null){
+
+            System.out.println("No List Found");
+        }
+
+        else{
+
+            
+            
+            Node current = head;
+
+            while(current != null){
+
+                if(current.getData() == p.getData()){
+                    flag = true;
+                    break;
+                }
+
+                current = current.getNext();
+                pos++;
+            }
+
+        }
+        if(flag)
+            return pos;
+        
+        return -1;
     }
 
     void print(){

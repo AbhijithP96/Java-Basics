@@ -27,7 +27,7 @@ public class Run {
 
             for(int i =0; i<size; i++){
 
-                ob.add(new Node(r.nextInt((ub-lb)+1)+lb));
+                ob.append(new Node(r.nextInt((ub-lb)+1)+lb));
             }
         }
 
@@ -45,6 +45,14 @@ public class Run {
         System.out.println(ob.size());
         
         ob.print();
+
+        System.out.println("Enter value to Search");
+        int search = sc.nextInt();
+
+        if(ob.search(new Node(search)) == -1)
+            System.out.println("No element found");
+        else
+            System.out.println("Element found at Index :" + ob.search(new Node(search)));
         
     }
     
